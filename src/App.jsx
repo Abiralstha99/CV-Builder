@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import GeneralInfoForm from './components/GeneralInfoForm'
+import ResumePreview from './components/ResumePreview'
 
 function App() {
   // App.jsx will own the state and then will pass props to the components
@@ -12,6 +13,14 @@ function App() {
   return (
     <>
     <GeneralInfoForm 
+      name={name}
+      setName={setName}
+      email={email}
+      setEmail={setEmail}
+      address={address}
+      setAddress={setAddress}
+    />
+    <ResumePreview 
       name={name}
       setName={setName}
       email={email}
