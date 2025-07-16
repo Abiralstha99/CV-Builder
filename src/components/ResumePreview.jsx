@@ -8,8 +8,14 @@ function ResumePreview({ name, setName, email, setEmail, address, setAddress, sc
             <div className="resume-header">
                 {name && <h1 className="resume-name">{name}</h1>}
                 <div className="resume-contact">
-                    {email && <div>{email}</div>}
-                    {address && <div>{address}</div>}
+                    {email && address ? (
+                        <div>{email} | {address}</div>
+                    ) : (
+                        <>
+                            {email && <div>{email}</div>}
+                            {address && <div>{address}</div>}
+                        </>
+                    )}
                 </div>
             </div>
 

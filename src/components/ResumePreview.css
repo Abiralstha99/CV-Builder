@@ -31,8 +31,7 @@
 .resume-contact {
   font-size: 10pt;
   margin-bottom: 3px;
-  display: grid;
-  grid-template-columns: 1fr 1fr; 
+  text-align: center;
 }
 
 .resume-section {
