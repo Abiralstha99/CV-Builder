@@ -14,6 +14,7 @@ function App() {
   const [graduationDate, setGraduationDate] = useState('');
 
   console.log(name, email, address)
+  console.log('Education:', schoolName, major, graduationDate)
 
   return (
     <div className='min-h-screen w-screen p-4 sm:p-6 bg-white text-black grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6'>
@@ -46,6 +47,12 @@ function App() {
           setEmail={setEmail}
           address={address}
           setAddress={setAddress}
+          schoolName={schoolName}
+          setSchoolName={setSchoolName}
+          major={major}
+          setMajor={setMajor}
+          graduationDate={graduationDate}
+          setGraduationDate={setGraduationDate}
         />
       </div>
     </div>

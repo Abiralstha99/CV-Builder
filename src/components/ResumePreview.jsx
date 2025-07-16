@@ -1,14 +1,34 @@
 import React from "react";
+import "./ResumePreview.css";
 
-function ResumePreview({ name, setName, email, setEmail, address, setAddress }) {
+function ResumePreview({ name, setName, email, setEmail, address, setAddress, schoolName, setSchoolName, major, setMajor, graduationDate, setGraduationDate }) {
     return (
-        <>
-            <div className="p-6 border rounded-md bg-white text-black shadow space-y-2 text-center">
-                {name && <h1 className="text-2xl font-bold">{name}</h1>}
-                {email && <p className="text-2xl font-bold">{email}</p>}
-                {address && <p className="text-2xl font-bold">{address}</p>}
+        <div className="resume-container">
+            {/* Header Section */}
+            <div className="resume-header">
+                {name && <h1 className="resume-name">{name}</h1>}
+                <div className="resume-contact">
+                    {email && <div>{email}</div>}
+                    {address && <div>{address}</div>}
+                </div>
             </div>
-        </>
+
+            {/* Education Section */}
+            {(schoolName || major || graduationDate) && (
+                <div className="resume-section">
+                    <h2 className="resume-section-title">Education</h2>
+                    <div className="resume-institution">
+                        <div>
+                            {schoolName && <div className="resume-school-name">{schoolName}</div>}
+                            {major && <div className="resume-degree">{major}</div>}
+                        </div>
+                        <div>
+                            {graduationDate && <div className="resume-date">Expected Graduation: {graduationDate}</div>}
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
     )
 }
 export default ResumePreview;
