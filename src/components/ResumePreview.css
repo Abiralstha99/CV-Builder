@@ -1,0 +1,78 @@
+/* ResumePreview specific styles */
+.resume-container {
+  max-width: 8.5in;
+  width: 100%;
+  min-height: 11in;
+  margin: 0 auto;
+  padding: 0.75in;
+  background-color: white;
+  color: black;
+  font-family: "Times New Roman", serif;
+  font-size: 11pt;
+  line-height: 1.15;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.resume-header {
+  text-align: center;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+.resume-name {
+  font-size: 20pt;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.resume-contact {
+  font-size: 10pt;
+  margin-bottom: 3px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+}
+
+.resume-section {
+  margin-bottom: 20px;
+}
+
+.resume-section-title {
+  font-size: 12pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid #000;
+  margin-bottom: 8px;
+  padding-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+
+.resume-institution {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.resume-school-name {
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+.resume-location {
+  font-style: italic;
+  font-size: 10pt;
+}
+
+.resume-degree {
+  font-style: italic;
+  margin-bottom: 3px;
+}
+
+.resume-date {
+  font-style: italic;
+  text-align: right;
+  font-size: 10pt;
+}
