@@ -17,8 +17,9 @@ function App() {
   console.log('Education:', schoolName, major, graduationDate)
 
   return (
-    <div className='min-h-screen w-screen p-4 sm:p-6 bg-white text-black grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6'>
-      <div className='w-full'>
+    <div className='min-h-screen w-screen p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-indigo-100 text-black grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6'>      <div className='w-full space-y-6'>
+      <div className='bg-white p-6 rounded-lg shadow-lg border border-gray-200'>
+        <h2 className='text-2xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2'>Personal Information</h2>
         <GeneralInfoForm
           name={name}
           setName={setName}
@@ -27,8 +28,8 @@ function App() {
           address={address}
           setAddress={setAddress}
         />
-        <br />
-        <h5>Education Section</h5>
+
+        <h2 className='text-2xl font-bold text-gray-800 mb-4 mt-8 border-b border-gray-200 pb-2'>Education</h2>
         <EducationForm
           schoolName={schoolName}
           setSchoolName={setSchoolName}
@@ -37,8 +38,8 @@ function App() {
           graduationDate={graduationDate}
           setGraduationDate={setGraduationDate}
         />
-
       </div>
+    </div>
       <div className='w-full'>
         <ResumePreview
           name={name}
