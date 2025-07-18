@@ -1,20 +1,35 @@
 import React from "react";
 import "./ResumePreview.css";
 
-function ResumePreview({ name, setName, email, setEmail, address, setAddress, schoolName, setSchoolName, major, setMajor, graduationDate, setGraduationDate }) {
+function ResumePreview({ name, setName, email, setEmail, address, setAddress, linkedin, setLinkedin, schoolName, setSchoolName, major, setMajor, graduationDate, setGraduationDate }) {
     return (
         <div className="resume-container">
             {/* Header Section */}
             <div className="resume-header">
                 {name && <h1 className="resume-name">{name}</h1>}
                 <div className="resume-contact">
-                    {email && address ? (
-                        <div>{email} | {address}</div>
-                    ) : (
-                        <>
-                            {email && <div>{email}</div>}
-                            {address && <div>{address}</div>}
-                        </>
+                    {(email || address || linkedin) && (
+                        <div>
+                            {email && <span>{email}</span>}
+                            {email && (address || linkedin) && <span> | </span>}
+                            {address && <span>{address}</span>}
+                            {address && linkedin && <span> | </span>}
+                            {linkedin && (
+                                <a
+                                    href={linkedin.startsWith('http') ? linkedin : `https://${linkedin}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="resume-linkedin-link"
+                                >
+                                     {linkedin.includes('/in/') ?
+                                        linkedin.split('/in/')[1].split('/')[0] :
+                                        linkedin.includes('linkedin.com/') ?
+                                            linkedin.split('linkedin.com/')[1].split('/')[0] :
+                                            linkedin
+                                    }
+                                </a>
+                            )}
+                        </div>
                     )}
                 </div>
             </div>

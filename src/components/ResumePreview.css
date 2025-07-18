@@ -34,6 +34,15 @@
   text-align: center;
 }
 
+.resume-linkedin-link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.resume-linkedin-link:hover {
+  color: #0066cc;
+}
+
 .resume-section {
   margin-bottom: 20px;
 }

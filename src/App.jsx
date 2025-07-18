@@ -9,6 +9,7 @@ function App() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [address, setAddress] = useState('')
+  const [linkedin, setLinkedin] = useState('')
   const [schoolName, setSchoolName] = useState('');
   const [major, setMajor] = useState('');
   const [graduationDate, setGraduationDate] = useState('');
@@ -27,6 +28,8 @@ function App() {
           setEmail={setEmail}
           address={address}
           setAddress={setAddress}
+          linkedin={linkedin}
+          setLinkedin={setLinkedin}
         />
 
         <h2 className='text-2xl font-bold text-gray-800 mb-4 mt-8 border-b border-gray-200 pb-2'>Education</h2>
@@ -48,6 +51,8 @@ function App() {
           setEmail={setEmail}
           address={address}
           setAddress={setAddress}
+          linkedin={linkedin}
+          setLinkedin={setLinkedin}
           schoolName={schoolName}
           setSchoolName={setSchoolName}
           major={major}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function GeneralInfoForm({ name, setName, email, setEmail, address, setAddress }) {
+function GeneralInfoForm({ name, setName, email, setEmail, address, setAddress, linkedin, setLinkedin }) {
     return (
         <div className="flex flex-col gap-4">
             <input
@@ -21,6 +21,12 @@ function GeneralInfoForm({ name, setName, email, setEmail, address, setAddress }
                 onChange={(e) => setAddress(e.target.value)}
                 className="px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-gray-50 hover:bg-white"
                 placeholder="Address"
+            />
+            <input
+                value={linkedin}
+                onChange={(e) => setLinkedin(e.target.value)}
+                className="px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-gray-50 hover:bg-white"
+                placeholder="LinkedIn Profile URL (e.g., https://linkedin.com/in/yourname)"
             />
         </div>
     )
