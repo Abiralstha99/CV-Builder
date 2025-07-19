@@ -1,7 +1,20 @@
 import React from "react";
 import "./ResumePreview.css";
 
-function ResumePreview({ name, setName, email, setEmail, address, setAddress, linkedin, setLinkedin, schoolName, setSchoolName, major, setMajor, graduationDate, setGraduationDate }) {
+function ResumePreview({
+    name, setName,
+    email, setEmail,
+    address, setAddress,
+    linkedin, setLinkedin,
+    schoolName, setSchoolName,
+    major, setMajor,
+    graduationDate, setGraduationDate,
+    companyName, setCompanyName,
+    positionTitle, setPositionTitle,
+    details, setDetails,
+    startDate, setStartDate,
+    endDate, setEndDate
+}) {
     return (
         <div className="resume-container">
             {/* Header Section */}
@@ -51,6 +64,37 @@ function ResumePreview({ name, setName, email, setEmail, address, setAddress, li
                             {graduationDate && <div className="resume-date">Expected Graduation: {graduationDate}</div>}
                         </div>
                     </div>
+                </div>
+            )}
+
+            {/* Experience Section */}
+            {(companyName || positionTitle || details || startDate || endDate) && (
+                <div className="resume-section">
+                    <h2 className="resume-section-title">Experience</h2>
+                    <div className="resume-experience-header">
+                        <div>
+                            {companyName && <div className="resume-company-name">{companyName}</div>}
+                            {positionTitle && <div className="resume-position-title">{positionTitle}</div>}
+                        </div>
+                        <div>
+                            {(startDate || endDate) && (
+                                <div className="resume-experience-dates">
+                                    {startDate} {startDate && endDate && ' - '} {endDate}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    {details && (
+                        <div className="resume-job-details">
+                            {details.split('\n').map((line, index) => (
+                                line.trim() && (
+                                    <div key={index} className="resume-bullet-point">
+                                        • {line.trim()}
+                                    </div>
+                                )
+                            ))}
+                        </div>
+                    )}
                 </div>
             )}
         </div>
