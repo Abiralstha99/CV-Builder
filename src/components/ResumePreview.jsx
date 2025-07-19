@@ -21,11 +21,15 @@ function ResumePreview({ name, setName, email, setEmail, address, setAddress, li
                                     rel="noopener noreferrer"
                                     className="resume-linkedin-link"
                                 >
-                                     {linkedin.includes('/in/') ?
-                                        linkedin.split('/in/')[1].split('/')[0] :
-                                        linkedin.includes('linkedin.com/') ?
-                                            linkedin.split('linkedin.com/')[1].split('/')[0] :
-                                            linkedin
+                                    {
+                                        linkedin.includes('/in/') ?
+                                            linkedin.split('/in/')[1].split('/')[0]
+                                                .replace(/-[a-z0-9]+$/i, '') // Remove ID at the end
+                                                .replace(/-/g, ' ') // Replace hyphens with spaces
+                                                .replace(/\b\w/g, l => l.toUpperCase()) // Capitalize first letter of each word
+                                            : linkedin.includes('linkedin.com/') ?
+                                                linkedin.split('linkedin.com/')[1].split('/')[0]
+                                                : linkedin
                                     }
                                 </a>
                             )}
