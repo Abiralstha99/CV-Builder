@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import GeneralInfoForm from './components/GeneralInfoForm'
 import EducationForm from './components/EducationForm'
+import ExperienceForm from './components/ExperienceForm'
 import ResumePreview from './components/ResumePreview'
 
 function App() {
@@ -13,6 +14,12 @@ function App() {
   const [schoolName, setSchoolName] = useState('');
   const [major, setMajor] = useState('');
   const [graduationDate, setGraduationDate] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [positionTitle, setPositionTitle] = useState('');
+  const [details, setDetails] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
 
   console.log(name, email, address)
   console.log('Education:', schoolName, major, graduationDate)
@@ -41,6 +48,20 @@ function App() {
           graduationDate={graduationDate}
           setGraduationDate={setGraduationDate}
         />
+
+        <h2 className='text-2xl font-bold text-gray-800 mb-4 mt-8 border-b border-gray-200 pb-2'>Experience</h2>
+        <ExperienceForm
+          companyName={companyName}
+          setCompanyName={setCompanyName}
+          positionTitle={positionTitle}
+          setPositionTitle={setPositionTitle}
+          details={details}
+          setDetails={setDetails}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+        />
       </div>
     </div>
       <div className='w-full'>
@@ -59,6 +80,16 @@ function App() {
           setMajor={setMajor}
           graduationDate={graduationDate}
           setGraduationDate={setGraduationDate}
+          companyName={companyName}
+          setCompanyName={setCompanyName}
+          positionTitle={positionTitle}
+          setPositionTitle={setPositionTitle}
+          details={details}
+          setDetails={setDetails}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
         />
       </div>
     </div>
