@@ -15,7 +15,7 @@ function ExperienceForm({
                         {experienceEntries.length > 1 && (
                             <button
                                 onClick={() => removeExperienceEntry(experience.id)}
-                                className="text-white hover:text-red-700 font-bold px-2 py-1 rounded"
+                                className="text-white bg-red-500 hover:bg-red-600 font-bold px-2 py-1 rounded transition-colors duration-200"
                             >
                                 ×
                             </button>
