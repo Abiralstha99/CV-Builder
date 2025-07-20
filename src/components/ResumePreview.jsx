@@ -6,9 +6,7 @@ function ResumePreview({
     email, setEmail,
     address, setAddress,
     linkedin, setLinkedin,
-    schoolName, setSchoolName,
-    major, setMajor,
-    graduationDate, setGraduationDate,
+    educationEntries,
     companyName, setCompanyName,
     positionTitle, setPositionTitle,
     details, setDetails,
@@ -52,18 +50,22 @@ function ResumePreview({
             </div>
 
             {/* Education Section */}
-            {(schoolName || major || graduationDate) && (
+            {(educationEntries && educationEntries.length > 0 && educationEntries.some(edu => edu.schoolName || edu.major || edu.graduationDate)) && (
                 <div className="resume-section">
                     <h2 className="resume-section-title">Education</h2>
-                    <div className="resume-institution">
-                        <div>
-                            {schoolName && <div className="resume-school-name">{schoolName}</div>}
-                            {major && <div className="resume-degree">{major}</div>}
-                        </div>
-                        <div>
-                            {graduationDate && <div className="resume-date">Expected Graduation: {graduationDate}</div>}
-                        </div>
-                    </div>
+                    {educationEntries.map((education, index) => (
+                        (education.schoolName || education.major || education.graduationDate) && (
+                            <div key={index} className="resume-institution">
+                                <div>
+                                    {education.schoolName && <div className="resume-school-name">{education.schoolName}</div>}
+                                    {education.major && <div className="resume-degree">{education.major}</div>}
+                                </div>
+                                <div>
+                                    {education.graduationDate && <div className="resume-date">Expected Graduation: {education.graduationDate}</div>}
+                                </div>
+                            </div>
+                        )
+                    ))}
                 </div>
             )}
 
