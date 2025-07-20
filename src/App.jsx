@@ -17,12 +17,6 @@ function App() {
     { id: 1, schoolName: '', major: '', graduationDate: '' }
   ]);
 
-  const [companyName, setCompanyName] = useState('');
-  const [positionTitle, setPositionTitle] = useState('');
-  const [details, setDetails] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-
   // Helper functions for education management
   const addEducationEntry = () => {
     const newEntry = {
@@ -58,9 +52,52 @@ function App() {
       setEducationEntries(educationEntries.filter(entry => entry.id !== id));
     }
   };
+  // Testing
+  // console.log(name, email, address)
+  // console.log('Education:', educationEntries)
 
-  console.log(name, email, address)
-  console.log('Education:', educationEntries)
+  // Education as an array of objects
+  const [experienceEntries, setExperienceEntries] = useState([
+    { id: 1, 
+      companyName: '', 
+      positionTitle: '', 
+      details: '', 
+      startDate: '', 
+      endDate: '' }
+  ]);
+
+  // Helper function to add experience
+  const addExperienceEntry = () => {
+    const newEntry = {
+      id: Date.now(), 
+      companyName: '', 
+      positionTitle: '', 
+      details: '', 
+      startDate: '', 
+      endDate: '' 
+    };
+    setExperienceEntries([...experienceEntries, newEntry]);
+  }
+
+  // Helper function to update the experience entry - field is the property and value is the new value being assigned
+  const updateExperienceEntry = (id,field,value) => {
+    const updatedEntries = [];
+    for ( let i = 0; i<experienceEntries ; i++){
+      const entry = experienceEntries[i];
+      if (id === entry.id){
+        const updatedEntry = {...entry};
+        updatedEntry[field] = value;
+        updatedEntries.push(updatedEntry);
+      } else {
+        // keep it unchanged
+        updatedEntries.push(entry);
+      }
+    }
+    setEducationEntries(updatedEntries);
+  };
+
+  //Helper function to delete a experience entry
+
 
   return (
     <div className='min-h-screen w-screen p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-indigo-100 text-black grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6'>      <div className='w-full space-y-6'>
