@@ -97,7 +97,11 @@ function App() {
   };
 
   //Helper function to delete a experience entry
-
+  const removeExperienceEntry = (id) => {
+    if(experienceEntries.length > 1){
+      setEducationEntries(experienceEntries.filter(entry => id !== entry.id));
+    }
+  }
 
   return (
     <div className='min-h-screen w-screen p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-indigo-100 text-black grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6'>      <div className='w-full space-y-6'>
