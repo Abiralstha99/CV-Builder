@@ -7,11 +7,7 @@ function ResumePreview({
     address, setAddress,
     linkedin, setLinkedin,
     educationEntries,
-    companyName, setCompanyName,
-    positionTitle, setPositionTitle,
-    details, setDetails,
-    startDate, setStartDate,
-    endDate, setEndDate
+    experienceEntries
 }) {
     return (
         <div className="resume-container">
@@ -70,33 +66,69 @@ function ResumePreview({
             )}
 
             {/* Experience Section */}
-            {(companyName || positionTitle || details || startDate || endDate) && (
+            {experienceEntries && experienceEntries.length > 0 && experienceEntries.some(exp => exp.companyName || exp.positionTitle || exp.details || exp.startDate || exp.endDate) && (
                 <div className="resume-section">
                     <h2 className="resume-section-title">Experience</h2>
-                    <div className="resume-experience-header">
-                        <div>
-                            {companyName && <div className="resume-company-name">{companyName}</div>}
-                            {positionTitle && <div className="resume-position-title">{positionTitle}</div>}
-                        </div>
-                        <div>
-                            {(startDate || endDate) && (
-                                <div className="resume-experience-dates">
-                                    {startDate} {startDate && endDate && ' - '} {endDate}
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                    {details && (
-                        <div className="resume-job-details">
-                            {details.split('\n').map((line, index) => (
-                                line.trim() && (
-                                    <div key={index} className="resume-bullet-point">
-                                        • {line.trim()}
+
+                    {/* Looping through each experience entry and displaying it */}
+                    {experienceEntries.map((experience, index) => {
+                        // Checking if this particular experience has value inside or not
+                        const hasContent = experience.companyName ||
+                            experience.positionTitle ||
+                            experience.details ||
+                            experience.startDate ||
+                            experience.endDate;
+
+                        // after checking now if it has content then we will display it
+                        if (hasContent) {
+                            return (
+                                <div key={experience.id} className="resume-experience-entry">
+                                    {/* Company and job title section */}
+                                    <div className="resume-experience-header">
+                                        <div>
+                                            {/* Showing company name if it exists */}
+                                            {experience.companyName && (
+                                                <div className="resume-company-name">
+                                                    {experience.companyName}
+                                                </div>
+                                            )}
+                                            {experience.positionTitle && (
+                                                <div className="resume-position-title">
+                                                    {experience.positionTitle}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Dates section */}
+                                        <div>
+                                            {(experience.startDate || experience.endDate) && (
+                                                <div className="resume-experience-dates">
+                                                    {experience.startDate}
+                                                    {/* // Displays '-' only if both startDate & endDate are present */}
+                                                    {experience.startDate && experience.endDate && ' - '}
+                                                    {experience.endDate}
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
-                                )
-                            ))}
-                        </div>
-                    )}
+
+                                    {/* Job details section */}
+                                    {experience.details && (
+                                        <div className="resume-job-details">
+                                            {experience.details.split('\n').map((line, index) => (
+                                                line.trim() && (
+                                                    <div key={index} className="resume-bullet-point">
+                                                        • {line.trim()}
+                                                    </div>
+                                                )
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        }
+                        return null;
+                    })}
                 </div>
             )}
         </div>
