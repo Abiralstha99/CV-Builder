@@ -56,36 +56,31 @@ function App() {
   // console.log(name, email, address)
   // console.log('Education:', educationEntries)
 
-  // Education as an array of objects
+  // Experience as an array of objects
   const [experienceEntries, setExperienceEntries] = useState([
-    { id: 1, 
-      companyName: '', 
-      positionTitle: '', 
-      details: '', 
-      startDate: '', 
-      endDate: '' }
+    { id: 1, companyName: '', positionTitle: '', details: '', startDate: '', endDate: '' }
   ]);
 
   // Helper function to add experience
   const addExperienceEntry = () => {
     const newEntry = {
-      id: Date.now(), 
-      companyName: '', 
-      positionTitle: '', 
-      details: '', 
-      startDate: '', 
-      endDate: '' 
+      id: Date.now(),
+      companyName: '',
+      positionTitle: '',
+      details: '',
+      startDate: '',
+      endDate: ''
     };
     setExperienceEntries([...experienceEntries, newEntry]);
   }
 
   // Helper function to update the experience entry - field is the property and value is the new value being assigned
-  const updateExperienceEntry = (id,field,value) => {
+  const updateExperienceEntry = (id, field, value) => {
     const updatedEntries = [];
-    for ( let i = 0; i<experienceEntries ; i++){
+    for (let i = 0; i < experienceEntries.length; i++) {
       const entry = experienceEntries[i];
-      if (id === entry.id){
-        const updatedEntry = {...entry};
+      if (id === entry.id) {
+        const updatedEntry = { ...entry };
         updatedEntry[field] = value;
         updatedEntries.push(updatedEntry);
       } else {
@@ -93,13 +88,13 @@ function App() {
         updatedEntries.push(entry);
       }
     }
-    setEducationEntries(updatedEntries);
+    setExperienceEntries(updatedEntries);
   };
 
   //Helper function to delete a experience entry
   const removeExperienceEntry = (id) => {
-    if(experienceEntries.length > 1){
-      setEducationEntries(experienceEntries.filter(entry => id !== entry.id));
+    if (experienceEntries.length > 1) {
+      setExperienceEntries(experienceEntries.filter(entry => entry.id !== id));
     }
   }
 
@@ -128,16 +123,10 @@ function App() {
 
         <h2 className='text-2xl font-bold text-gray-800 mb-4 mt-8 border-b border-gray-200 pb-2'>Experience</h2>
         <ExperienceForm
-          companyName={companyName}
-          setCompanyName={setCompanyName}
-          positionTitle={positionTitle}
-          setPositionTitle={setPositionTitle}
-          details={details}
-          setDetails={setDetails}
-          startDate={startDate}
-          setStartDate={setStartDate}
-          endDate={endDate}
-          setEndDate={setEndDate}
+          experienceEntries={experienceEntries}
+          addExperienceEntry={addExperienceEntry}
+          updateExperienceEntry={updateExperienceEntry}
+          removeExperienceEntry={removeExperienceEntry}
         />
       </div>
     </div>
@@ -152,16 +141,7 @@ function App() {
           linkedin={linkedin}
           setLinkedin={setLinkedin}
           educationEntries={educationEntries}
-          companyName={companyName}
-          setCompanyName={setCompanyName}
-          positionTitle={positionTitle}
-          setPositionTitle={setPositionTitle}
-          details={details}
-          setDetails={setDetails}
-          startDate={startDate}
-          setStartDate={setStartDate}
-          endDate={endDate}
-          setEndDate={setEndDate}
+          experienceEntries={experienceEntries}
         />
       </div>
     </div>
