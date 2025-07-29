@@ -7,6 +7,8 @@ import ResumePreview from './components/ResumePreview'
 import ResumePDF from './components/ResumePDF'
 import ReactPDF, { PDFDownloadLink } from '@react-pdf/renderer';
 import PersonIcon from '@mui/icons-material/Person';
+import SchoolIcon from '@mui/icons-material/School';
+import WorkIcon from '@mui/icons-material/Work';
 
 function App() {
   // App.jsx will own the state and then will pass props to the components
@@ -126,8 +128,8 @@ function App() {
 
         {/* Education Card */}
         <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200 mb-6'>
-          <div className="flex items-center mb-4 bg-green-500 rounded-t-xl px-4 py-3">
-            <span className="material-icons text-white mr-2">school</span>
+          <div className="flex items-center mb-4 bg-green-600 rounded-t-xl px-4 py-3">
+            <SchoolIcon fontSize="large" className="text-white mr-2" />
             <h2 className="text-2xl font-bold text-white">Education</h2>
           </div>
           <div className="pt-2">
@@ -142,8 +144,8 @@ function App() {
 
         {/* Experience Card */}
         <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200'>
-          <div className="flex items-center mb-4 bg-amber-500 rounded-t-xl px-4 py-3">
-            <span className="material-icons text-white mr-2">work</span>
+          <div className="flex items-center mb-4 bg-purple-600 rounded-t-xl px-4 py-3">
+              <WorkIcon fontSize="large" className="text-white mr-2" />
             <h2 className="text-2xl font-bold text-white">Experience</h2>
           </div>
           <div className="pt-2">
