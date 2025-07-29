@@ -1,5 +1,15 @@
 import React from "react";
+import { format } from 'date-fns';
 import "./ResumePreview.css";
+
+function formatMonthYear(dateString) {
+    if (!dateString) return '';
+    try {
+        return format(new Date(dateString), 'MMMM yyyy');
+    } catch {
+        return dateString;
+    }
+}
 
 function ResumePreview({
     name, setName,
@@ -57,7 +67,7 @@ function ResumePreview({
                                     {education.major && <div className="resume-degree">{education.major}</div>}
                                 </div>
                                 <div>
-                                    {education.graduationDate && <div className="resume-date">Expected Graduation: {education.graduationDate}</div>}
+                                    {education.graduationDate && <div className="resume-date">Expected Graduation:  {formatMonthYear(education.graduationDate)}</div>}
                                 </div>
                             </div>
                         )
@@ -103,10 +113,9 @@ function ResumePreview({
                                         <div>
                                             {(experience.startDate || experience.endDate) && (
                                                 <div className="resume-experience-dates">
-                                                    {experience.startDate}
-                                                    {/* // Displays '-' only if both startDate & endDate are present */}
+                                                    {formatMonthYear(experience.startDate)}
                                                     {experience.startDate && experience.endDate && ' - '}
-                                                    {experience.endDate}
+                                                    {formatMonthYear(experience.endDate)}
                                                 </div>
                                             )}
                                         </div>
