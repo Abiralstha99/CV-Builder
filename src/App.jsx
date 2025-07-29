@@ -4,6 +4,9 @@ import GeneralInfoForm from './components/GeneralInfoForm'
 import EducationForm from './components/EducationForm'
 import ExperienceForm from './components/ExperienceForm'
 import ResumePreview from './components/ResumePreview'
+import ResumePDF from './components/ResumePDF'
+import ReactPDF, { PDFDownloadLink } from '@react-pdf/renderer';
+
 
 function App() {
   // App.jsx will own the state and then will pass props to the components
@@ -129,8 +132,44 @@ function App() {
           removeExperienceEntry={removeExperienceEntry}
         />
       </div>
+      <div>
+        <div>
+          <PDFDownloadLink
+            document={
+              <ResumePDF
+                name={name}
+                email={email}
+                address={address}
+                linkedin={linkedin}
+                educationEntries={educationEntries}
+                experienceEntries={experienceEntries}
+              />
+            }
+            fileName="Resume.pdf"
+          >
+            {({ loading }) => loading ? 'Loading document...' : 'Download now!'}
+          </PDFDownloadLink>
+        </div>
+      </div>
     </div>
       <div className='w-full'>
+        <div className='mb-4'>
+          <PDFDownloadLink
+            document={
+              <ResumePDF
+                name={name}
+                email={email}
+                address={address}
+                linkedin={linkedin}
+                educationEntries={educationEntries}
+                experienceEntries={experienceEntries}
+              />
+            }
+            fileName="Resume.pdf"
+          >
+            {({ loading }) => loading ? 'Loading document...' : 'Download now!'}
+          </PDFDownloadLink>
+        </div>
         <ResumePreview
           name={name}
           setName={setName}
@@ -145,6 +184,7 @@ function App() {
         />
       </div>
     </div>
+
   )
 }
 
