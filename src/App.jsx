@@ -6,7 +6,7 @@ import ExperienceForm from './components/ExperienceForm'
 import ResumePreview from './components/ResumePreview'
 import ResumePDF from './components/ResumePDF'
 import ReactPDF, { PDFDownloadLink } from '@react-pdf/renderer';
-
+import PersonIcon from '@mui/icons-material/Person';
 
 function App() {
   // App.jsx will own the state and then will pass props to the components
@@ -104,34 +104,56 @@ function App() {
   return (
     <div className='min-h-screen w-screen p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-indigo-100 text-black grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6'>
       <div className='w-full space-y-6'>
-        <div className='bg-white p-6 rounded-lg shadow-lg border border-gray-200'>
-          <h2 className='text-2xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2'>Personal Information</h2>
-          <GeneralInfoForm
-            name={name}
-            setName={setName}
-            email={email}
-            setEmail={setEmail}
-            address={address}
-            setAddress={setAddress}
-            linkedin={linkedin}
-            setLinkedin={setLinkedin}
-          />
+        {/* Personal Information Card */}
+        <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200 mb-6'>
+          <div className="flex items-center mb-4 bg-blue-500 rounded-t-xl px-4 py-3">
+            <PersonIcon fontSize="large" className="text-white mr-2" />
+            <h2 className="text-2xl font-bold text-white">Personal Information</h2>
+          </div>
+          <div className="pt-2">
+            <GeneralInfoForm
+              name={name}
+              setName={setName}
+              email={email}
+              setEmail={setEmail}
+              address={address}
+              setAddress={setAddress}
+              linkedin={linkedin}
+              setLinkedin={setLinkedin}
+            />
+          </div>
+        </div>
 
-          <h2 className='text-2xl font-bold text-gray-800 mb-4 mt-8 border-b border-gray-200 pb-2'>Education</h2>
-          <EducationForm
-            educationEntries={educationEntries}
-            addEducationEntry={addEducationEntry}
-            updateEducationEntry={updateEducationEntry}
-            removeEducationEntry={removeEducationEntry}
-          />
+        {/* Education Card */}
+        <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200 mb-6'>
+          <div className="flex items-center mb-4 bg-green-500 rounded-t-xl px-4 py-3">
+            <span className="material-icons text-white mr-2">school</span>
+            <h2 className="text-2xl font-bold text-white">Education</h2>
+          </div>
+          <div className="pt-2">
+            <EducationForm
+              educationEntries={educationEntries}
+              addEducationEntry={addEducationEntry}
+              updateEducationEntry={updateEducationEntry}
+              removeEducationEntry={removeEducationEntry}
+            />
+          </div>
+        </div>
 
-          <h2 className='text-2xl font-bold text-gray-800 mb-4 mt-8 border-b border-gray-200 pb-2'>Experience</h2>
-          <ExperienceForm
-            experienceEntries={experienceEntries}
-            addExperienceEntry={addExperienceEntry}
-            updateExperienceEntry={updateExperienceEntry}
-            removeExperienceEntry={removeExperienceEntry}
-          />
+        {/* Experience Card */}
+        <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200'>
+          <div className="flex items-center mb-4 bg-amber-500 rounded-t-xl px-4 py-3">
+            <span className="material-icons text-white mr-2">work</span>
+            <h2 className="text-2xl font-bold text-white">Experience</h2>
+          </div>
+          <div className="pt-2">
+            <ExperienceForm
+              experienceEntries={experienceEntries}
+              addExperienceEntry={addExperienceEntry}
+              updateExperienceEntry={updateExperienceEntry}
+              removeExperienceEntry={removeExperienceEntry}
+            />
+          </div>
         </div>
       </div>
       <div className='w-full'>
@@ -161,7 +183,7 @@ function App() {
             }
             fileName="Resume.pdf"
             className="bg-red-500 text-white px-6 py-2 rounded font-semibold shadow hover:bg-red-600 transition-colors duration-200"
-          style={{color: 'white'}}>
+            style={{ color: 'white' }}>
             {({ loading }) => 'Download now'}
           </PDFDownloadLink>
         </div>
