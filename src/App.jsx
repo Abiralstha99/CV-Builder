@@ -9,6 +9,8 @@ import ReactPDF, { PDFDownloadLink } from '@react-pdf/renderer';
 import PersonIcon from '@mui/icons-material/Person';
 import SchoolIcon from '@mui/icons-material/School';
 import WorkIcon from '@mui/icons-material/Work';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+
 
 function App() {
   // App.jsx will own the state and then will pass props to the components
@@ -145,7 +147,7 @@ function App() {
         {/* Experience Card */}
         <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200'>
           <div className="flex items-center mb-4 bg-purple-600 rounded-t-xl px-4 py-3">
-              <WorkIcon fontSize="large" className="text-white mr-2" />
+            <WorkIcon fontSize="large" className="text-white mr-2" />
             <h2 className="text-2xl font-bold text-white">Experience</h2>
           </div>
           <div className="pt-2">
@@ -171,7 +173,7 @@ function App() {
           educationEntries={educationEntries}
           experienceEntries={experienceEntries}
         />
-        <div className='mt-6 flex justify-end'>
+        <div className='mt-6'>
           <PDFDownloadLink
             document={
               <ResumePDF
@@ -184,9 +186,11 @@ function App() {
               />
             }
             fileName="Resume.pdf"
-            className="bg-red-500 text-white px-6 py-2 rounded font-semibold shadow hover:bg-red-600 transition-colors duration-200"
-            style={{ color: 'white' }}>
-            {({ loading }) => 'Download now'}
+            className="w-full flex justify-center items-center bg-red-600 text-white p-3 rounded-xl font-bold text-lg shadow hover:bg-red-700 transition-colors duration-200 gap-3"
+            style={{ color: 'white' }}
+          >
+            <FileDownloadIcon className="text-white" />
+            Download Resume
           </PDFDownloadLink>
         </div>
       </div>
