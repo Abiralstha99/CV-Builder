@@ -106,96 +106,102 @@ function App() {
   }
 
   return (
-    <div className='min-h-screen w-screen p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-indigo-100 text-black grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6'>
-      <div className='w-full space-y-6'>
-        {/* Personal Information Card */}
-        <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200 mb-6'>
-          <div className="flex items-center mb-4 bg-blue-500 rounded-t-xl px-4 py-3">
-            <PersonIcon fontSize="large" className="text-white mr-2" />
-            <h2 className="text-2xl font-bold text-white">Personal Information</h2>
-          </div>
-          <div className="pt-2">
-            <GeneralInfoForm
-              name={name}
-              setName={setName}
-              email={email}
-              setEmail={setEmail}
-              address={address}
-              setAddress={setAddress}
-              linkedin={linkedin}
-              setLinkedin={setLinkedin}
-            />
-          </div>
-        </div>
-
-        {/* Education Card */}
-        <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200 mb-6'>
-          <div className="flex items-center mb-4 bg-green-600 rounded-t-xl px-4 py-3">
-            <SchoolIcon fontSize="large" className="text-white mr-2" />
-            <h2 className="text-2xl font-bold text-white">Education</h2>
-          </div>
-          <div className="pt-2">
-            <EducationForm
-              educationEntries={educationEntries}
-              addEducationEntry={addEducationEntry}
-              updateEducationEntry={updateEducationEntry}
-              removeEducationEntry={removeEducationEntry}
-            />
-          </div>
-        </div>
-
-        {/* Experience Card */}
-        <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200'>
-          <div className="flex items-center mb-4 bg-purple-600 rounded-t-xl px-4 py-3">
-            <WorkIcon fontSize="large" className="text-white mr-2" />
-            <h2 className="text-2xl font-bold text-white">Experience</h2>
-          </div>
-          <div className="pt-2">
-            <ExperienceForm
-              experienceEntries={experienceEntries}
-              addExperienceEntry={addExperienceEntry}
-              updateExperienceEntry={updateExperienceEntry}
-              removeExperienceEntry={removeExperienceEntry}
-            />
-          </div>
-        </div>
-      </div>
-      <div className='w-full'>
-        <ResumePreview
-          name={name}
-          setName={setName}
-          email={email}
-          setEmail={setEmail}
-          address={address}
-          setAddress={setAddress}
-          linkedin={linkedin}
-          setLinkedin={setLinkedin}
-          educationEntries={educationEntries}
-          experienceEntries={experienceEntries}
-        />
-        <div className='mt-6'>
-          <PDFDownloadLink
-            document={
-              <ResumePDF
+    <div className='min-h-screen w-screen p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-indigo-100 text-black'>
+      {/* Header */}
+      <header className="mb-8 text-center">
+        <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 mb-2">Resume Builder</h1>
+        <p className="text-lg text-gray-600">Create your professional resume with ease</p>
+      </header>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6'>
+        <div className='w-full space-y-6'>
+          {/* Personal Information Card */}
+          <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200 mb-6'>
+            <div className="flex items-center mb-4 bg-blue-500 rounded-t-xl px-4 py-3">
+              <PersonIcon fontSize="large" className="text-white mr-2" />
+              <h2 className="text-2xl font-bold text-white">Personal Information</h2>
+            </div>
+            <div className="pt-2">
+              <GeneralInfoForm
                 name={name}
+                setName={setName}
                 email={email}
+                setEmail={setEmail}
                 address={address}
+                setAddress={setAddress}
                 linkedin={linkedin}
-                educationEntries={educationEntries}
-                experienceEntries={experienceEntries}
+                setLinkedin={setLinkedin}
               />
-            }
-            fileName="Resume.pdf"
-            className="w-full flex justify-center items-center bg-red-600 text-white p-3 rounded-xl font-bold text-lg shadow hover:bg-red-700 transition-colors duration-200 gap-3"
-            style={{ color: 'white' }}
-          >
-            <FileDownloadIcon className="text-white" />
-            Download Resume
-          </PDFDownloadLink>
+            </div>
+          </div>
+
+          {/* Education Card */}
+          <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200 mb-6'>
+            <div className="flex items-center mb-4 bg-green-600 rounded-t-xl px-4 py-3">
+              <SchoolIcon fontSize="large" className="text-white mr-2" />
+              <h2 className="text-2xl font-bold text-white">Education</h2>
+            </div>
+            <div className="pt-2">
+              <EducationForm
+                educationEntries={educationEntries}
+                addEducationEntry={addEducationEntry}
+                updateEducationEntry={updateEducationEntry}
+                removeEducationEntry={removeEducationEntry}
+              />
+            </div>
+          </div>
+
+          {/* Experience Card */}
+          <div className='bg-white p-6 rounded-xl shadow-lg border border-gray-200'>
+            <div className="flex items-center mb-4 bg-purple-600 rounded-t-xl px-4 py-3">
+              <WorkIcon fontSize="large" className="text-white mr-2" />
+              <h2 className="text-2xl font-bold text-white">Experience</h2>
+            </div>
+            <div className="pt-2">
+              <ExperienceForm
+                experienceEntries={experienceEntries}
+                addExperienceEntry={addExperienceEntry}
+                updateExperienceEntry={updateExperienceEntry}
+                removeExperienceEntry={removeExperienceEntry}
+              />
+            </div>
+          </div>
+        </div>
+        <div className='w-full'>
+          <ResumePreview
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            address={address}
+            setAddress={setAddress}
+            linkedin={linkedin}
+            setLinkedin={setLinkedin}
+            educationEntries={educationEntries}
+            experienceEntries={experienceEntries}
+          />
+          <div className='mt-6'>
+            <PDFDownloadLink
+              document={
+                <ResumePDF
+                  name={name}
+                  email={email}
+                  address={address}
+                  linkedin={linkedin}
+                  educationEntries={educationEntries}
+                  experienceEntries={experienceEntries}
+                />
+              }
+              fileName="Resume.pdf"
+              className="w-full flex justify-center items-center bg-red-600 text-white p-3 rounded-xl font-bold text-lg shadow hover:bg-red-700 transition-colors duration-200 gap-3"
+              style={{ color: 'white' }}
+            >
+              <FileDownloadIcon className="text-white" />
+              Download Resume
+            </PDFDownloadLink>
+          </div>
         </div>
       </div>
     </div>
-
   )
 }
 
